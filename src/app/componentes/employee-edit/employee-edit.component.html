@@ -1,0 +1,45 @@
+<!-- construir o formulário para obtenção dos dados-->
+<div class = "container custom-container">
+    <div class = "col-md-12">
+        <h3 class = "mb-3 text center">{{ tituloComp }}</h3>
+
+        <div class = "form-group">
+            <span>Nome do funcionário</span>
+            <input type = "text" [(ngModel)] = "atualizarDados.name" placeholder = "Informe seu nome" class = "form-control" />
+        </div>
+
+        <div class = "form-group">
+            <span>E-mail</span>
+            <input type = "email" [(ngModel)] = "atualizarDados.email" placeholder = "Informe seu email" class = "form-control" />
+        </div>
+
+        <div class = "form-group">
+            <span>Telefone corporativo</span>
+            <input type = "text" [(ngModel)] = "atualizarDados.phone" placeholder = "Informe seu telefone" class = "form-control" />
+        </div>
+
+        <div class = "form-group">
+            <span>Data de contratação</span>
+            <input type = "date" [(ngModel)] = "atualizarDados.hiring" class = "form-control" />
+        </div>
+
+        <div class = "form-group">
+            <span>Departamento</span>
+            <select *ngIf = "listaDepartamentos != 0; else listaSemDados" [(ngModel)] = "atualizarDados.department" required class = "form-control">
+                <optgroup label="Lista de Departamentos">
+                    <option *ngFor = "let dados of listaDepartamentos" value="{{dados.id}}">{{dados.name}}</option>
+                </optgroup>
+            </select>
+        </div>
+        <div class = "form-group">
+            <button class = "btn btn-success btn-large btn-block" (click) = "atualizacaoDados()">Salvar registro</button>
+        </div>
+
+        <ng-template #listaSemDados>
+            <div class = "no-data text-center">
+                <button class = "btn btn-outline-primary" routerLink = "/employee-create">Criar Departamento</button>
+            </div>
+        </ng-template>
+    </div>
+</div>
+

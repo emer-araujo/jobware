@@ -1,0 +1,40 @@
+<!-- implementar a view do componente com algumas indicações de elementos e 
+propriedades já atualizadas em outros projetos-->
+<div class = "container custom-container2">
+    <div class = "col-md-12">
+        <h3>{{ tituloComp }}</h3>
+        <button type="button" class="btn btn-outline-info bt-sm" routerLink="/department-create">Adicionar</button>
+        <div class="input-group rounded">
+            <input #Filtrar type="P" (keyup)='filtrarDepartamento(Filtrar.value)' class="form-control rounded" placeholder="Pesquisar (Id ou Nome)" aria-label="Pesquisar" aria-describedby="search-addon">
+        </div>
+        <div *ngIf = "listaDepartamentos != 0; else listaSemDados">    
+            <table class = "table table-bordered text-light">
+                <thead>
+                    <tr>
+                        <th>Id Departamento</th>
+                        <th>Nome</th>
+                        <th>Ações a Executar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let dados of listaDepartamentosFiltrada">
+                        <td>{{ dados.id }}</td>
+                        <td>{{ dados.name }}</td>
+                        <button type="button" class="btn btn-outline-info bt-sm" routerLink = "/department-employees/{{dados.id}}">Funcionários</button>
+                        <button type="button" class="btn btn-outline-info bt-sm" routerLink="/department-edit/{{dados.id}}">Editar</button>
+                        <button type="button" class="btn btn-outline-danger bt-sm" (click) = "excluirDepartamento(dados.id)">Excluir</button>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <ng-template #listaSemDados>
+        <div class = "no-data text-center">
+            <p>
+                Ainda não há registros... Crie!.. clique no botão abaixo.
+            </p>
+            <button class = "btn btn-outline-primary" routerLink = "/department-create">Criar Registro</button>
+        </div>
+    </ng-template>
+</div>

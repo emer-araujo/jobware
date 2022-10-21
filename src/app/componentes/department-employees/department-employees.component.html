@@ -1,0 +1,30 @@
+<div class="container custom-container2">
+    <div class="col-md-12">
+        <h2>{{tituloComp}}</h2>
+        <hr/>
+        <div *ngIf = "listaFuncionarios != 0; else listaSemDados">    
+            <table class = "table table-bordered text-light">
+                <thead>
+                    <tr>
+                        <th>Id Funcionario</th>
+                        <th>Nome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let dados of listaFuncionarios">
+                        <td>{{ dados.id }}</td>
+                        <td><a routerLink ="/employee-details/{{dados.id}}">{{ dados.name }}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ng-template #listaSemDados>
+            <div class = "no-data text-center">
+                <p>
+                    Clique no botão abaixo para adicionar funcionários
+                </p>
+                <button class = "btn btn-outline-primary" routerLink = "/employee-create">Criar Registro</button>
+            </div>
+        </ng-template>
+    </div>
+</div>

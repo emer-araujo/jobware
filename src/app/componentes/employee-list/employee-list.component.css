@@ -1,0 +1,7 @@
+div > button {
+    margin-top: 5px;
+    margin-bottom: 5px; 
+}
+tr > button{
+    margin: 5px;
+}

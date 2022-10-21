@@ -1,0 +1,24 @@
+<div class="container custom-container2">
+    <div class="col-md-12">
+        <h2>{{tituloComp}}</h2>
+        <hr/>
+        <div>
+            <div>
+                <label><span>Nome: </span></label>{{ lerDadosDetalhados.name }}
+            </div>
+            <div>
+                <label><span>Email: </span></label>{{ lerDadosDetalhados.email }}
+            </div>
+            <div>
+                <label><span>Telefone: </span></label>{{ lerDadosDetalhados.phone }}
+            </div>
+            <div>
+                <label><span>Data de contratação: </span></label>{{ lerDadosDetalhados.hiring }}
+            </div>
+            <div>
+                <label><span>Departamento:: </span></label>{{ lerDadosDetalhados.department }}
+            </div>
+        </div>
+        <button (click) = "voltaPraLista()" class="btn btn-primary">Voltar para lista</button>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<!-- implementar a view do componente com algumas indicações de elementos e 
+propriedades já atualizadas em outros projetos-->
+<div class = "container custom-container2">
+    <div class = "col-md-12">
+        <div>
+            <h3>{{ tituloComp }}</h3>
+            <button type="button" class="btn btn-outline-info bt-sm" routerLink="/employee-create">Adicionar</button>
+        </div>
+        <div *ngIf = "listaColaboradores != 0; else listaSemDados">            
+            <table class = "table table-bordered text-light">
+                <thead>
+                    <tr>
+                        <th>Id Colaborador</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Data de Contratação</th>
+                        <th>Departamento</th>
+                        <th>Ação a Executar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let dados of listaColaboradores">
+                        <td>{{ dados.id }}</td>
+                        <td>{{ dados.name }}</td>
+                        <td>{{ dados.email }}</td>
+                        <td>{{ dados.phone }}</td>
+                        <td>{{ dados.hiring }}</td>
+                        <td>{{ filtrarDepartamento(dados.department) }}</td>
+                        <button type="button" class="btn btn-outline-info bt-sm" routerLink="/employee-details/{{dados.id}}">Detalhes</button>
+                        <button type="button" class="btn btn-outline-info bt-sm" routerLink = "/employee-edit/{{dados.id}}">Editar</button>
+                        <button type="button" class="btn btn-outline-danger bt-sm" (click) = "excluirColaborador(dados.id)">Excluir</button>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Se a verificação da coleção de dados for considerada FALSE a "miniview" - com seu conteudo - será exibido em tela-->
+    <ng-template #listaSemDados>
+        <div class = "no-data text-center">
+            <p>
+                Ainda não há registros... Crie!.. clique no botão abaixo.
+            </p>
+            <button class = "btn btn-outline-primary" routerLink = "/employee-create">Criar Registro</button>
+        </div>
+    </ng-template>
+</div>
